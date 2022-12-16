@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import { Home } from './Home';
 import { Product } from './Product';
+import { ArtistPrivate } from './ArtistPrivate';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/artistPrivate" element={<ArtistPrivate />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

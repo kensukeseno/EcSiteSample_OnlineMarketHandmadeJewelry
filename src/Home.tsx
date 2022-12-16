@@ -22,11 +22,14 @@ export function Home() {
     fetch("/homeArtist")
       .then((res) => res.json())
       .then((data) => setArtists(data));
-    fetch("/artistPrivate").then((res) => res.json());
   }, []);
 
   return (
     <div>
+      <form action="http://localhost:8080/login">
+        <button type="submit">login</button>
+      </form>
+
       <div>
         <ArtistTable data={artists} />
       </div>

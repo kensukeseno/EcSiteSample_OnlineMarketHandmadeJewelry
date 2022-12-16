@@ -32,7 +32,4 @@ const ArtistTable = ({ data }) => {
                             }) })));
                     }) }))] })) })));
 };
-const debugfunc = (event) => {
-    console.log("OK");
-};
 exports.default = ArtistTable;

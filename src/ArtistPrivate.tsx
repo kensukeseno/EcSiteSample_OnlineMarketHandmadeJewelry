@@ -1,37 +1,39 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import ProductTable from "./Components/ProductTable";
 
 export type Cols = {
-  product: string;
   photo: string;
+  product: string;
   price: number | "load";
 };
 
-export function Product() {
-  const search = useLocation().search;
-  const name = new URLSearchParams(search).get("name");
-
+export function ArtistPrivate() {
   const [products, setProducts] = useState<Cols[]>([
     {
-      product: "load",
       photo: "load",
+      product: "load",
       price: "load",
     },
   ]);
 
   useEffect(() => {
-    fetch(`/product?artist=${name}`)
+    fetch("/artistPrivate")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
 
   return (
     <div>
+      <form action="http://localhost:8080/logout">
+        <button type="submit">logout</button>
+      </form>
       <div>
-        <ProductTable data={products} />
+        <div>
+          <ProductTable data={products} />
+        </div>
       </div>
     </div>
   );
 }
-export default Product;
+
+export default ArtistPrivate;

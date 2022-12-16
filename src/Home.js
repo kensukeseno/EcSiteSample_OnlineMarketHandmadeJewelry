@@ -20,9 +20,8 @@ function Home() {
         fetch("/homeArtist")
             .then((res) => res.json())
             .then((data) => setArtists(data));
-        fetch("/artistPrivate").then((res) => res.json());
     }, []);
-    return ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(ArtistTable_1.default, { data: artists }) }) }));
+    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("form", Object.assign({ action: "http://localhost:8080/login" }, { children: (0, jsx_runtime_1.jsx)("button", Object.assign({ type: "submit" }, { children: "login" })) })), (0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(ArtistTable_1.default, { data: artists }) })] }));
 }
 exports.Home = Home;
 exports.default = Home;

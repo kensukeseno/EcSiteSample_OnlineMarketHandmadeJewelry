@@ -60,8 +60,4 @@ const ArtistTable: React.FC<ProductTableProps> = ({ data }) => {
   );
 };
 
-const debugfunc = (event: React.MouseEvent<HTMLElement>) => {
-  console.log("OK");
-};
-
 export default ArtistTable;
