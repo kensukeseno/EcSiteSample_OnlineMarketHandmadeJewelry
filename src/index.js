@@ -1,27 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.css';
-import { Home } from './Home';
-import { Product } from './Product';
-import { ArtistPrivate } from './ArtistPrivate';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/artistPrivate" element={<ArtistPrivate />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
-
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = __importDefault(require("react"));
+const client_1 = __importDefault(require("react-dom/client"));
+const Header_1 = require("./Header");
+const Body_1 = __importDefault(require("./Body"));
+require("./index.css");
+const react_router_dom_1 = require("react-router-dom");
+const Container_1 = __importDefault(require("react-bootstrap/Container"));
+function index() {
+    const rootElement = document.getElementById("root");
+    if (!rootElement)
+        throw new Error("Failed to find the root element");
+    const root = client_1.default.createRoot(rootElement);
+    root.render((0, jsx_runtime_1.jsx)(react_1.default.StrictMode, { children: (0, jsx_runtime_1.jsx)(react_router_dom_1.BrowserRouter, { children: (0, jsx_runtime_1.jsxs)(Container_1.default, { children: [(0, jsx_runtime_1.jsx)(Header_1.Header, {}), (0, jsx_runtime_1.jsx)("div", Object.assign({ style: { marginTop: "80px" } }, { children: (0, jsx_runtime_1.jsx)(Body_1.default, {}) }))] }) }) }));
+}
+index();

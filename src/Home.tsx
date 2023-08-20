@@ -1,40 +1,96 @@
 import { useState, useEffect } from "react";
-import ArtistTable from "./Components/ArtistTable";
+import ArtistField from "./Components/ArtistField";
+import { ArtistProduct, Product, PurchaseInfo } from "./Types/Columns";
 
-export type Cols = {
-  name: string;
-  photo: string;
-  base: string;
-  productList: string;
+type HomeProps = {
+  onPurchaseChange: (props: { purchase: PurchaseInfo }) => void;
 };
 
-export function Home() {
-  const [artists, setArtists] = useState<Cols[]>([
+export const Home: React.FC<HomeProps> = ({
+  onPurchaseChange: handlePurchaseChange,
+}) => {
+  const [artists, setArtists] = useState<ArtistProduct[]>([
     {
-      name: "load",
-      photo: "load",
-      base: "load",
-      productList: "load",
+      artist: { name: "load", photo: "load", artistId: "load" },
+      productEntityList: [
+        {
+          product: "load",
+          ammount: "load",
+          photo: "load",
+          productId: "load",
+          price: "load",
+          artistId: "load",
+        },
+      ],
+    },
+  ]);
+  type Position = { artist: string; position: number };
+
+  const [nowPosition, setNowPosition] = useState<Position[]>([
+    { artist: "load", position: 0 },
+  ]);
+  const showListLen: number = 3;
+  const [modifiedArtists, setModifiedArtists] = useState<ArtistProduct[]>([
+    {
+      artist: { name: "load", photo: "load", artistId: "load" },
+      productEntityList: [
+        {
+          product: "load",
+          ammount: "load",
+          photo: "load",
+          productId: "load",
+          price: "load",
+          artistId: "load",
+        },
+      ],
     },
   ]);
 
   useEffect(() => {
-    fetch("/homeArtist")
+    fetch("/productByArtist")
       .then((res) => res.json())
-      .then((data) => setArtists(data));
+      .then((data) => {
+        setArtists(data);
+        setNowPosition(
+          data.map((artistProduct: ArtistProduct) => {
+            let positionInfo = {
+              artist: artistProduct.artist.name,
+              position: 0,
+            };
+            return positionInfo;
+          })
+        );
+        setModifiedArtists(
+          data.map((artistProduct: ArtistProduct) => {
+            let modArtistProduct: ArtistProduct = {
+              artist: { name: "load", photo: "load", artistId: "load" },
+              productEntityList: [
+                {
+                  product: "load",
+                  ammount: "load",
+                  photo: "load",
+                  productId: "load",
+                  price: "load",
+                  artistId: "load",
+                },
+              ],
+            };
+
+            modArtistProduct.artist = artistProduct.artist;
+            modArtistProduct.productEntityList =
+              artistProduct.productEntityList.slice(0, showListLen);
+            return modArtistProduct;
+          })
+        );
+      });
   }, []);
 
   return (
-    <div>
-      <form action="http://localhost:8080/login">
-        <button type="submit">login</button>
-      </form>
-
-      <div>
-        <ArtistTable data={artists} />
-      </div>
-    </div>
+    <ArtistField
+      artistProducts={modifiedArtists}
+      handlePurchaseChange={handlePurchaseChange}
+    />
   );
-}
+};
 
 export default Home;
