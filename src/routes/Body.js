@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Body = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_router_dom_1 = require("react-router-dom");
-const Home_1 = require("./Home");
-const Product_1 = require("./Product");
-const Cart_1 = require("./Cart");
+const Home_1 = require("../pages/Home");
+const Product_1 = require("../pages/Product");
+const Cart_1 = require("../pages/Cart");
 const react_1 = require("react");
 function Body() {
     const [purchases, setPurchases] = (0, react_1.useState)([]);

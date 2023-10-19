@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Product, PurchaseInfo } from "./Types/Columns";
-import ProductFiled from "./Components/ProductField";
+import { Product, PurchaseInfo } from "../components/types/Columns";
+import ProductFiled from "../components/ProductField";
 
 type Props = {
   onPurchaseChange: (props: { purchase: PurchaseInfo }) => void;

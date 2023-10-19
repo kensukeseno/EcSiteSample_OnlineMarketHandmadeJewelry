@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./Home";
-import { Product } from "./Product";
-import { Cart } from "./Cart";
-import { PurchaseInfo } from "./Types/Columns";
+import { Home } from "../pages/Home";
+import { Product } from "../pages/Product";
+import { Cart } from "../pages/Cart";
+import { PurchaseInfo } from "../components/types/Columns";
 import { useState } from "react";
 
 export function Body() {

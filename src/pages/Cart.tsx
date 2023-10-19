@@ -1,4 +1,4 @@
-import { PurchaseInfo } from "./Types/Columns";
+import { PurchaseInfo } from "../components/types/Columns";
 import { Button, Col, Container, Row, Stack } from "react-bootstrap";
 import { useState } from "react";
 

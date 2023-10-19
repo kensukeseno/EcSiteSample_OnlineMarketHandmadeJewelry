@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Header } from "./Header";
-import Body from "./Body";
-import "./index.css";
+import { Header } from "./layouts/Header";
+import Body from "./routes/Body";
+import "./assets/css/index.css";
 import { BrowserRouter } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 

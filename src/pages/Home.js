@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Home = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const ArtistField_1 = __importDefault(require("./Components/ArtistField"));
+const ArtistField_1 = __importDefault(require("../components/ArtistField"));
 const Home = ({ onPurchaseChange: handlePurchaseChange, }) => {
     const [artists, setArtists] = (0, react_1.useState)([
         {

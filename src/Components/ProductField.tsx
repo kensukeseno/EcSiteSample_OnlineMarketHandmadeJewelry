@@ -1,5 +1,5 @@
 import React from "react";
-import { Product, PurchaseInfo } from "../Types/Columns";
+import { Product, PurchaseInfo } from "./types/Columns";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 

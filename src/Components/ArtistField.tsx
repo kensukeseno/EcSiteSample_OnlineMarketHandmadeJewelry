@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
-import { ArtistProduct, PurchaseInfo } from "../Types/Columns";
+import { ArtistProduct, PurchaseInfo } from "./types/Columns";
 import ProductFieldCarousel from "./ProductFieldCarousel";
 
 type ArtistFieldProps = {

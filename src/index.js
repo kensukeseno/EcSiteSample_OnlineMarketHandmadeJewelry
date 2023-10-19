@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const client_1 = __importDefault(require("react-dom/client"));
-const Header_1 = require("./Header");
-const Body_1 = __importDefault(require("./Body"));
-require("./index.css");
+const Header_1 = require("./layouts/Header");
+const Body_1 = __importDefault(require("./routes/Body"));
+require("./assets/css/index.css");
 const react_router_dom_1 = require("react-router-dom");
 const Container_1 = __importDefault(require("react-bootstrap/Container"));
 function index() {
