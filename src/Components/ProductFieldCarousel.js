@@ -10,7 +10,6 @@ const react_multi_carousel_1 = __importDefault(require("react-multi-carousel"));
 require("react-multi-carousel/lib/styles.css");
 const responsive = {
     superLargeDesktop: {
-        // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
         items: 5,
     },
@@ -43,38 +42,6 @@ const ProductFieldCarousel = ({ products, handlePurchaseChange, }) => {
     return ((0, jsx_runtime_1.jsx)(react_bootstrap_1.Row, { children: (0, jsx_runtime_1.jsx)(react_multi_carousel_1.default, Object.assign({ responsive: responsive }, { children: products.map((product) => ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: {
                     listStyle: "none",
                     textAlign: "center",
-                } }, { children: [(0, jsx_runtime_1.jsx)("img", { className: "img-fluid", title: product.product + " pic", src: `data:image/jpeg;base64,${product.photo}` }), (0, jsx_runtime_1.jsx)("li", { children: product.product }), (0, jsx_runtime_1.jsxs)("li", { children: ["PRICE: ", product.price, " jpy"] }), (0, jsx_runtime_1.jsxs)("li", { children: ["REMAINING: ", product.ammount] }), (0, jsx_runtime_1.jsx)(PurchaseNum, { product: product })] }), product.productId))) })) })
-    // <Row>
-    //   <Carousel>
-    //     {products.map((product) => (
-    //       <CarouselItem
-    //         style={{
-    //           transform: "translateX(25%)",
-    //         }}
-    //       >
-    //         <Col
-    //           as="ul"
-    //           md={4}
-    //           key={product.productId}
-    //           style={{
-    //             listStyle: "none",
-    //             textAlign: "center",
-    //           }}
-    //         >
-    //           <img
-    //             className="img-fluid"
-    //             title={product.product + " pic"}
-    //             src={`data:image/jpeg;base64,${product.photo}`}
-    //           />
-    //           <li>{product.product}</li>
-    //           <li>PRICE: {product.price} jpy</li>
-    //           <li>REMAINING: {product.ammount}</li>
-    //           <PurchaseNum product={product} />
-    //         </Col>
-    //       </CarouselItem>
-    //     ))}
-    //   </Carousel>
-    // </Row>
-    );
+                } }, { children: [(0, jsx_runtime_1.jsx)("img", { className: "img-fluid", title: product.product + " pic", src: `data:image/jpeg;base64,${product.photo}` }), (0, jsx_runtime_1.jsx)("li", { children: product.product }), (0, jsx_runtime_1.jsxs)("li", { children: ["PRICE: ", product.price, " jpy"] }), (0, jsx_runtime_1.jsxs)("li", { children: ["REMAINING: ", product.ammount] }), (0, jsx_runtime_1.jsx)(PurchaseNum, { product: product })] }), product.productId))) })) }));
 };
 exports.default = ProductFieldCarousel;

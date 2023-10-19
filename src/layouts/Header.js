@@ -31,7 +31,7 @@ function ErrorMessage() {
         return (0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, {});
     }
 }
-const Login = ({ show, handleClose, handleShow }) => {
+const Login = ({ show, handleClose }) => {
     return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: ["Login", (0, jsx_runtime_1.jsx)("div", Object.assign({ onClick: (e) => e.stopPropagation() }, { children: (0, jsx_runtime_1.jsxs)(Modal_1.default, Object.assign({ show: show, onHide: handleClose }, { children: [(0, jsx_runtime_1.jsx)(Modal_1.default.Header, Object.assign({ closeButton: true }, { children: (0, jsx_runtime_1.jsx)(Modal_1.default.Title, { children: "LOGIN" }) })), (0, jsx_runtime_1.jsxs)(Modal_1.default.Body, { children: [(0, jsx_runtime_1.jsx)(ErrorMessage, {}), (0, jsx_runtime_1.jsxs)("form", Object.assign({ action: "/login", method: "post" }, { children: [(0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)("input", { type: "text", name: "username", placeholder: "username" }) }), (0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)("input", { type: "password", name: "password", placeholder: "password" }) }), (0, jsx_runtime_1.jsx)("input", { type: "submit", value: "go" })] }))] }), (0, jsx_runtime_1.jsx)(Modal_1.default.Footer, { children: (0, jsx_runtime_1.jsx)(Button_1.default, Object.assign({ variant: "secondary", onClick: handleClose }, { children: "Close" })) })] })) }))] }));
 };
 function Header() {

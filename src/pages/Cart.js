@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cart = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_bootstrap_1 = require("react-bootstrap");
-const Cart = ({ purchases, purchaseSum: purchseSum, onPurchaseChange, }) => {
+const Cart = ({ purchases, purchaseSum: purchseSum, }) => {
     const nullConverter = (num) => {
         if (num === "load") {
             return (num = 0);

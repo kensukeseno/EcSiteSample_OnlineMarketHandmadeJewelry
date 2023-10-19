@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Accordion from "react-bootstrap/Accordion";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
@@ -32,7 +31,7 @@ type LoginProps = {
   handleShow: () => void;
 };
 
-const Login: React.FC<LoginProps> = ({ show, handleClose, handleShow }) => {
+const Login: React.FC<LoginProps> = ({ show, handleClose }) => {
   return (
     <>
       Login

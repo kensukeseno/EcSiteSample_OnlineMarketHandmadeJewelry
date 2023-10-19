@@ -1,6 +1,5 @@
 import { PurchaseInfo } from "../components/types/Columns";
 import { Button, Col, Container, Row, Stack } from "react-bootstrap";
-import { useState } from "react";
 
 type CartProps = {
   purchases: PurchaseInfo[];
@@ -11,7 +10,6 @@ type CartProps = {
 export const Cart: React.FC<CartProps> = ({
   purchases,
   purchaseSum: purchseSum,
-  onPurchaseChange,
 }) => {
   const nullConverter = (num: number | "load") => {
     if (num === "load") {

@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import ArtistField from "../components/ArtistField";
-import {
-  ArtistProduct,
-  Product,
-  PurchaseInfo,
-} from "../components/types/Columns";
+import { ArtistProduct, PurchaseInfo } from "../components/types/Columns";
 
 type HomeProps = {
   onPurchaseChange: (props: { purchase: PurchaseInfo }) => void;

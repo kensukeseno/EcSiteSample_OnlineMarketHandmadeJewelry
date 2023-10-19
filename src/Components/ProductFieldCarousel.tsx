@@ -1,12 +1,7 @@
 import React from "react";
 import { Product, PurchaseInfo } from "./types/Columns";
 import { useState } from "react";
-import {
-  /*Carousel,*/ CarouselItem,
-  Col,
-  Container,
-  Row,
-} from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -16,7 +11,6 @@ type ProductFiledProps = {
 };
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -98,37 +92,6 @@ const ProductFieldCarousel: React.FC<ProductFiledProps> = ({
         ))}
       </Carousel>
     </Row>
-    // <Row>
-    //   <Carousel>
-    //     {products.map((product) => (
-    //       <CarouselItem
-    //         style={{
-    //           transform: "translateX(25%)",
-    //         }}
-    //       >
-    //         <Col
-    //           as="ul"
-    //           md={4}
-    //           key={product.productId}
-    //           style={{
-    //             listStyle: "none",
-    //             textAlign: "center",
-    //           }}
-    //         >
-    //           <img
-    //             className="img-fluid"
-    //             title={product.product + " pic"}
-    //             src={`data:image/jpeg;base64,${product.photo}`}
-    //           />
-    //           <li>{product.product}</li>
-    //           <li>PRICE: {product.price} jpy</li>
-    //           <li>REMAINING: {product.ammount}</li>
-    //           <PurchaseNum product={product} />
-    //         </Col>
-    //       </CarouselItem>
-    //     ))}
-    //   </Carousel>
-    // </Row>
   );
 };
 
