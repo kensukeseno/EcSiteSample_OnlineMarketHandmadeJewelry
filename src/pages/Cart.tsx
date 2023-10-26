@@ -1,15 +1,17 @@
-import { PurchaseInfo } from "../components/types/Columns";
-import { Button, Col, Container, Row, Stack } from "react-bootstrap";
+import { ProductInCart } from "../components/types/Columns";
+import { Col, Row, Stack } from "react-bootstrap";
 
 type CartProps = {
-  purchases: PurchaseInfo[];
+  purchases: ProductInCart[];
   purchaseSum: { num: number; price: number };
-  onPurchaseChange: (props: { purchase: PurchaseInfo }) => void;
+  onPurchaseChange: (props: { purchase: ProductInCart }) => void;
+  onPurchaseDelete: (deleteIndex: number) => void;
 };
 
 export const Cart: React.FC<CartProps> = ({
   purchases,
   purchaseSum: purchseSum,
+  onPurchaseDelete,
 }) => {
   const nullConverter = (num: number | "load") => {
     if (num === "load") {
@@ -19,23 +21,35 @@ export const Cart: React.FC<CartProps> = ({
     }
   };
 
-  const productList = purchases.map((purchase) => (
+  const productList = purchases.map((key, index) => (
     <Col
       md={4}
-      key={purchase.product.productId}
+      sm={6}
+      xs={12}
+      key={key.product.productId}
       style={{ listStyle: "none", textAlign: "center" }}
     >
       <img
         className="img-fluid"
-        src={`data:image/jpeg;base64,${purchase.product.photo}`}
+        src={`data:image/jpeg;base64,${key.product.photo}`}
       />
-      <li>{purchase.product.product}</li>
-      <li>PRICE: {nullConverter(purchase.product.price)} jpy</li>
-      <li>AMMOUNT: {purchase.purchaseAmmount}</li>
+      <li>{key.product.product}</li>
+      <li>PRICE: {nullConverter(key.product.price)} jpy</li>
+      <li>AMMOUNT: {key.purchaseAmmount}</li>
       <li>
         TOTAL PRICE:
-        {nullConverter(purchase.product.price) * purchase.purchaseAmmount}
+        {nullConverter(key.product.price) * key.purchaseAmmount}
       </li>
+      <button
+        type="button"
+        className="btn btn btn-outline-dark"
+        style={{ padding: "2px" }}
+        onClick={() => {
+          onPurchaseDelete(index);
+        }}
+      >
+        delete
+      </button>
     </Col>
   ));
 
@@ -46,37 +60,35 @@ export const Cart: React.FC<CartProps> = ({
       );
     } else {
       return (
-        <Container>
-          <Row>
-            <Col md={9}>
-              <Row>{productList}</Row>
-            </Col>
-            <Stack
-              as={Col}
-              gap={2}
-              className="mt-5"
-              md={3}
-              style={{ height: "fit-content" }}
-            >
-              <Button
-                className="w-100 font-weight-bold"
-                variant="primary"
-                style={{ borderRadius: "0px" }}
-              >
-                Proceed to Buy
-              </Button>
-              <div className="fw-bold">
-                ITEMS
-                <span style={{ color: "red" }}> {purchseSum.num}</span>
-              </div>
-              <div className="fw-bold">
-                TOTAL
-                <span style={{ color: "red" }}> {purchseSum.price} JPY</span>
-              </div>
-              <div style={{ height: "12px", backgroundColor: "#0d6efd" }}></div>
-            </Stack>
-          </Row>
-        </Container>
+        <Row>
+          <Col md={9} sm={8} xs={4} className="border rounded-1 p-2">
+            <Row>{productList}</Row>
+          </Col>
+          <Stack
+            as={Col}
+            gap={2}
+            className="mx-3 p-0"
+            md={2}
+            sm={3}
+            xs={6}
+            style={{
+              height: "fit-content",
+              position: "fixed",
+              top: "75px",
+              right: "20px",
+            }}
+          >
+            <div className="px-1" style={{ color: "gray" }}>
+              ITEMS {purchseSum.num}
+            </div>
+            <div className="px-1" style={{ color: "gray" }}>
+              TOTAL {purchseSum.price} JPY
+            </div>
+            <a className="btn btn-outline-secondary w-100 py-1" href="/pay">
+              Proceed to Buy
+            </a>
+          </Stack>
+        </Row>
       );
     }
   };

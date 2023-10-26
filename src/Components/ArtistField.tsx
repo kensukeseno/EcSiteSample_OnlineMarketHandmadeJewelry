@@ -1,12 +1,12 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
-import { ArtistProduct, PurchaseInfo } from "./types/Columns";
+import { ArtistProduct, ProductInCart } from "./types/Columns";
 import ProductFieldCarousel from "./ProductFieldCarousel";
 
 type ArtistFieldProps = {
   artistProducts: ArtistProduct[];
-  handlePurchaseChange: (props: { purchase: PurchaseInfo }) => void;
+  handlePurchaseChange: (props: { purchase: ProductInCart }) => void;
 };
 
 const ArtistField: React.FC<ArtistFieldProps> = ({

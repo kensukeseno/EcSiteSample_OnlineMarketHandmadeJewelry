@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import ArtistField from "../components/ArtistField";
-import { ArtistProduct, PurchaseInfo } from "../components/types/Columns";
+import { ArtistProduct, ProductInCart } from "../components/types/Columns";
 
 type HomeProps = {
-  onPurchaseChange: (props: { purchase: PurchaseInfo }) => void;
+  onPurchaseChange: (props: { purchase: ProductInCart }) => void;
 };
 
 export const Home: React.FC<HomeProps> = ({

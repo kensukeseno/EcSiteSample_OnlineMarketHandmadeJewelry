@@ -1,5 +1,5 @@
 import React from "react";
-import { Product, PurchaseInfo } from "./types/Columns";
+import { Product, ProductInCart } from "./types/Columns";
 import { useState } from "react";
 import { Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
@@ -7,7 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 
 type ProductFiledProps = {
   products: Product[];
-  handlePurchaseChange: (props: { purchase: PurchaseInfo }) => void;
+  handlePurchaseChange: (props: { purchase: ProductInCart }) => void;
 };
 const responsive = {
   superLargeDesktop: {
@@ -34,7 +34,7 @@ const ProductFieldCarousel: React.FC<ProductFiledProps> = ({
 }) => {
   const PurchaseNum = (props: { product: Product }) => {
     const [value, setValue] = useState<number>(1);
-    const purchase: PurchaseInfo = {
+    const purchase: ProductInCart = {
       product: props.product,
       purchaseAmmount: value,
     };
@@ -72,7 +72,7 @@ const ProductFieldCarousel: React.FC<ProductFiledProps> = ({
     <Row>
       <Carousel responsive={responsive}>
         {products.map((product) => (
-          <div
+          <ul
             key={product.productId}
             style={{
               listStyle: "none",
@@ -88,7 +88,7 @@ const ProductFieldCarousel: React.FC<ProductFiledProps> = ({
             <li>PRICE: {product.price} jpy</li>
             <li>REMAINING: {product.ammount}</li>
             <PurchaseNum product={product} />
-          </div>
+          </ul>
         ))}
       </Carousel>
     </Row>

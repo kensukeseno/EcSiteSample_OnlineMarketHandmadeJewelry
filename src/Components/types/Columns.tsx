@@ -18,7 +18,7 @@ export type ArtistProduct = {
   productEntityList: Product[];
 };
 
-export type PurchaseInfo = {
+export type ProductInCart = {
   product: Product;
   purchaseAmmount: number;
 };

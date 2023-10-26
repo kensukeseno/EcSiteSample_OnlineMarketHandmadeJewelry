@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Product, PurchaseInfo } from "../components/types/Columns";
+import { Product, ProductInCart } from "../components/types/Columns";
 import ProductFiled from "../components/ProductField";
 
 type Props = {
-  onPurchaseChange: (props: { purchase: PurchaseInfo }) => void;
+  onPurchaseChange: (
+    props: { purchase: ProductInCart },
+    addOrDelete: string
+  ) => void;
 };
 
 export function Product(props: Props) {
@@ -41,17 +44,15 @@ export function Product(props: Props) {
       .then((data) => {
         setProducts(data);
         setListLen(data.length);
-        console.log("a");
       });
   }, []);
 
   return (
     <>
-      {/* <ProductFiled
+      <ProductFiled
         products={products}
         handlePurchaseChange={props.onPurchaseChange}
-      /> */}
-      <div>{listLen}</div>
+      />
     </>
   );
 }

@@ -39,7 +39,7 @@ const ProductFieldCarousel = ({ products, handlePurchaseChange, }) => {
                 alignItems: "center",
             } }, { children: [(0, jsx_runtime_1.jsx)("button", Object.assign({ type: "button", className: "btn btn btn-outline-dark", style: { padding: "2px" }, onClick: () => handlePurchaseChange({ purchase }) }, { children: "Add to Cart" })), (0, jsx_runtime_1.jsx)("input", { className: "ml-1", style: { width: "25%", textAlign: "center" }, type: "number", min: "1", max: props.product.ammount, defaultValue: "1", onChange: (event) => setValue(event.target.valueAsNumber) })] })));
     };
-    return ((0, jsx_runtime_1.jsx)(react_bootstrap_1.Row, { children: (0, jsx_runtime_1.jsx)(react_multi_carousel_1.default, Object.assign({ responsive: responsive }, { children: products.map((product) => ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: {
+    return ((0, jsx_runtime_1.jsx)(react_bootstrap_1.Row, { children: (0, jsx_runtime_1.jsx)(react_multi_carousel_1.default, Object.assign({ responsive: responsive }, { children: products.map((product) => ((0, jsx_runtime_1.jsxs)("ul", Object.assign({ style: {
                     listStyle: "none",
                     textAlign: "center",
                 } }, { children: [(0, jsx_runtime_1.jsx)("img", { className: "img-fluid", title: product.product + " pic", src: `data:image/jpeg;base64,${product.photo}` }), (0, jsx_runtime_1.jsx)("li", { children: product.product }), (0, jsx_runtime_1.jsxs)("li", { children: ["PRICE: ", product.price, " jpy"] }), (0, jsx_runtime_1.jsxs)("li", { children: ["REMAINING: ", product.ammount] }), (0, jsx_runtime_1.jsx)(PurchaseNum, { product: product })] }), product.productId))) })) }));
