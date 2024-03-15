@@ -3,37 +3,35 @@ import { Home } from "../pages/Home";
 import { Product } from "../pages/Product";
 import { Cart } from "../pages/Cart";
 import { Pay } from "../pages/Pay";
-import { ProductInCart } from "../components/types/Columns";
+import { TypeProductInCart } from "../components/types/Columns";
 import { useState } from "react";
 
 export function Body() {
-  const [productsInCart, setProductsInCart] = useState<ProductInCart[]>([]);
+  const [productsInCart, setProductsInCart] = useState<TypeProductInCart[]>([]);
   const [cart, setCart] = useState<{
     num: number;
     price: number;
   }>({ num: 0, price: 0 });
 
   // This method is called when a new item is added to cart
-  const handlePurchaseChange = (props: { purchase: ProductInCart }) => {
+  const handlePurchaseChange = (purchase: TypeProductInCart) => {
     let newPurchaseflag = true;
     productsInCart.map((p) => {
       // If the same item is already in cart, add the number of products
       // If not, add the new item as a new item in the list
-      if (p.product.productId === props.purchase.product.productId) {
-        p.purchaseAmmount += props.purchase.purchaseAmmount;
+      if (p.product.productId === purchase.product.productId) {
+        p.purchaseAmmount += purchase.purchaseAmmount;
         newPurchaseflag = false;
       }
     });
     if (newPurchaseflag) {
-      setProductsInCart((prevPurchase) => [...prevPurchase, props.purchase]);
+      setProductsInCart((prevPurchase) => [...prevPurchase, purchase]);
     }
     // Update cart infomation
-    if (props.purchase.product.price === "load") throw new Error("Not number");
+    if (purchase.product.price === "load") throw new Error("Not number");
     setCart({
-      num: cart.num + props.purchase.purchaseAmmount,
-      price:
-        cart.price +
-        props.purchase.purchaseAmmount * props.purchase.product.price,
+      num: cart.num + purchase.purchaseAmmount,
+      price: cart.price + purchase.purchaseAmmount * purchase.product.price,
     });
   };
 
@@ -75,7 +73,6 @@ export function Body() {
             <Cart
               purchases={productsInCart}
               purchaseSum={cart}
-              onPurchaseChange={handlePurchaseChange}
               onPurchaseDelete={handlePurchaseDelete}
             />
           }

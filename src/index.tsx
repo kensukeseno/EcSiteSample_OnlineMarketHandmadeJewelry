@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Header } from "./layouts/Header";
+import Header from "./layouts/Header";
 import Body from "./routes/Body";
 import "./assets/css/index.css";
 import { BrowserRouter } from "react-router-dom";

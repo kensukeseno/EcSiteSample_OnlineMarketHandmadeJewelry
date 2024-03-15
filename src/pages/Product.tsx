@@ -1,33 +1,26 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Product, ProductInCart } from "../components/types/Columns";
-import ProductFiled from "../components/ProductField";
+import { TpyeProduct, TypeProductInCart } from "../components/types/Columns";
+import SearchField from "./Search";
+import {
+  BACKEND_URL_DEVELOPMENT,
+  BACKEND_URL_PRODUCTION,
+} from "../properties/application";
 
-type Props = {
-  onPurchaseChange: (
-    props: { purchase: ProductInCart },
-    addOrDelete: string
-  ) => void;
-};
+const backendUrl =
+  process.env.NODE_ENV === "development"
+    ? BACKEND_URL_DEVELOPMENT
+    : BACKEND_URL_PRODUCTION;
 
-export function Product(props: Props) {
+type ProductProps = { onPurchaseChange: (purchase: TypeProductInCart) => void };
+
+export const Product: React.FC<ProductProps> = ({
+  onPurchaseChange: handlePurchaseChange,
+}) => {
   const search = useLocation().search;
   const product = new URLSearchParams(search).get("product");
 
-  const [products, setProducts] = useState<Product[]>([
-    {
-      product: "load",
-      ammount: "load",
-      photo: "load",
-      productId: "load",
-      price: "load",
-      artistId: "load",
-    },
-  ]);
-  const [listLen, setListLen] = useState(0);
-  const [nowPosition, setNowPosition] = useState(0);
-  const showListLen: number = 3;
-  const [modifiedProducts, setModifiedProducts] = useState<Product[]>([
+  const [products, setProducts] = useState<TpyeProduct[]>([
     {
       product: "load",
       ammount: "load",
@@ -39,21 +32,20 @@ export function Product(props: Props) {
   ]);
 
   useEffect(() => {
-    fetch(`/product?product=${product}`)
+    fetch(backendUrl + `/product?product=${product}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setListLen(data.length);
       });
   }, []);
 
   return (
     <>
-      <ProductFiled
+      <SearchField
         products={products}
-        handlePurchaseChange={props.onPurchaseChange}
+        onPurchaseChange={handlePurchaseChange}
       />
     </>
   );
-}
-export default Product;
+};
+export default TpyeProduct;

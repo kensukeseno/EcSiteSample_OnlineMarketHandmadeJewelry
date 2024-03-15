@@ -1,10 +1,10 @@
-export type Artist = {
+export type TypeArtist = {
   name: "load" | string;
   photo: "load" | string;
   artistId: "load" | number;
 };
 
-export type Product = {
+export type TpyeProduct = {
   product: "load" | string;
   ammount: "load" | number;
   photo: "load" | string;
@@ -13,12 +13,12 @@ export type Product = {
   artistId: "load" | number;
 };
 
-export type ArtistProduct = {
-  artist: Artist;
-  productEntityList: Product[];
+export type TypeArtistProduct = {
+  artist: TypeArtist;
+  productEntityList: TpyeProduct[];
 };
 
-export type ProductInCart = {
-  product: Product;
+export type TypeProductInCart = {
+  product: TpyeProduct;
   purchaseAmmount: number;
 };

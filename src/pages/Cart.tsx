@@ -1,10 +1,10 @@
-import { ProductInCart } from "../components/types/Columns";
-import { Col, Row, Stack } from "react-bootstrap";
+import { TypeProductInCart } from "../components/types/Columns";
+import { Col, Row } from "react-bootstrap";
+import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 
 type CartProps = {
-  purchases: ProductInCart[];
+  purchases: TypeProductInCart[];
   purchaseSum: { num: number; price: number };
-  onPurchaseChange: (props: { purchase: ProductInCart }) => void;
   onPurchaseDelete: (deleteIndex: number) => void;
 };
 
@@ -27,28 +27,31 @@ export const Cart: React.FC<CartProps> = ({
       sm={6}
       xs={12}
       key={key.product.productId}
-      style={{ listStyle: "none", textAlign: "center" }}
+      style={{
+        listStyle: "none",
+        textAlign: "left",
+      }}
     >
       <img
         className="img-fluid"
         src={`data:image/jpeg;base64,${key.product.photo}`}
       />
       <li>{key.product.product}</li>
-      <li>PRICE: {nullConverter(key.product.price)} jpy</li>
-      <li>AMMOUNT: {key.purchaseAmmount}</li>
+      <li>Price: {nullConverter(key.product.price)} jpy</li>
+      <li>Ammount: {key.purchaseAmmount}</li>
       <li>
-        TOTAL PRICE:
+        Total Price:
         {nullConverter(key.product.price) * key.purchaseAmmount}
       </li>
       <button
         type="button"
-        className="btn btn btn-outline-dark"
-        style={{ padding: "2px" }}
+        className="btn"
+        style={{ padding: "2px", float: "right" }}
         onClick={() => {
           onPurchaseDelete(index);
         }}
       >
-        delete
+        <DeleteSharpIcon />
       </button>
     </Col>
   ));
@@ -56,38 +59,54 @@ export const Cart: React.FC<CartProps> = ({
   const CartBody = () => {
     if (purchases.length === 0) {
       return (
-        <div className="fs-1 text-center fw-normal">Your Cart is empty</div>
+        <div
+          className="fs-1 text-center fw-normal"
+          style={{ color: "#2994dc" }}
+        >
+          No Item in Cart
+        </div>
       );
     } else {
       return (
         <Row>
-          <Col md={9} sm={8} xs={4} className="border rounded-1 p-2">
+          <Col
+            md={8}
+            sm={8}
+            xs={6}
+            className="border rounded-1 p-2"
+            style={{ backgroundColor: "white" }}
+          >
             <Row>{productList}</Row>
           </Col>
-          <Stack
-            as={Col}
-            gap={2}
-            className="mx-3 p-0"
-            md={2}
+          <Col
+            className="mx-3"
+            md={3}
             sm={3}
-            xs={6}
+            xs={5}
             style={{
               height: "fit-content",
               position: "fixed",
-              top: "75px",
-              right: "20px",
+              top: "80px",
+              right: "5px",
+              backgroundColor: "white",
+              padding: "5px 5px",
+              borderRadius: "4px",
             }}
           >
-            <div className="px-1" style={{ color: "gray" }}>
-              ITEMS {purchseSum.num}
-            </div>
-            <div className="px-1" style={{ color: "gray" }}>
-              TOTAL {purchseSum.price} JPY
-            </div>
-            <a className="btn btn-outline-secondary w-100 py-1" href="/pay">
+            <div className="px-1">Items {purchseSum.num}</div>
+            <div className="px-1">Total {purchseSum.price} JPY</div>
+            <a
+              className="btn btn-outline-secondary w-100 py-1"
+              style={{
+                color: "#0D9276",
+                borderColor: "#0D9276",
+                borderWidth: "2px",
+              }}
+              href="/pay"
+            >
               Proceed to Buy
             </a>
-          </Stack>
+          </Col>
         </Row>
       );
     }

@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+header{
+  background-color: #40A2E3;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFF6E9;
+  background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
+}
+
+/* desktop */
+@media screen and (min-width: 1024px){
+  .search-container{
+    width: 30%;
+    /* float: left; */
+  }
+}
+/* tablet */
+@media screen and (min-width: 464px){
+  .search-container{
+    width: 30%;
+    /* float: left; */
+  }
+}
+/* mobile */
+@media screen and (max-width: 464px){
+  .search-container{
+    width: 100%;
+    /* float: left; */
+  }
+}
+
+.dropdown button{
+  background-color: white;
+  color: #40A2E3;
+
+}
+.dropdown button:hover{
+  background-color:  #dee7ec;
+  color: #2994dc;
+}
+.dropdown-toggle.btn, .dropdown-toggle.show.btn{
+  background-color:  white;
+  color: #2994dc;
+}
+
+.btn-outline-secondary:hover{
+  background-color: #87c9bc;
 }

@@ -1,24 +1,24 @@
-import React from "react";
-import { Product, ProductInCart } from "./types/Columns";
-import { useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { TpyeProduct as TypeProduct, TypeProductInCart } from "./types/Columns";
+import { Col } from "react-bootstrap";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
-type ProductFiledProps = {
-  products: Product[];
-  handlePurchaseChange: (
-    props: { purchase: ProductInCart },
-    addOrDelete: string
-  ) => void;
+type ProductFieldProps = {
+  product: TypeProduct;
+  onPurchaseChange: (purchase: TypeProductInCart) => void;
 };
 
-const ProductFiled: React.FC<ProductFiledProps> = ({
-  products,
-  handlePurchaseChange,
+const ProductField: React.FC<ProductFieldProps> = ({
+  product,
+  onPurchaseChange: handlePurchaseChange,
 }) => {
-  const PurchaseNum = (props: { product: Product }) => {
+  type PurchaseNumProps = {
+    product: TypeProduct;
+  };
+  const PurchaseNum: React.FC<PurchaseNumProps> = ({ product }) => {
     const [value, setValue] = useState<number>(1);
-    const purchase: ProductInCart = {
-      product: props.product,
+    const purchase: TypeProductInCart = {
+      product: product,
       purchaseAmmount: value,
     };
 
@@ -26,57 +26,60 @@ const ProductFiled: React.FC<ProductFiledProps> = ({
       <li
         style={{
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <button
-          type="button"
-          className="btn btn btn-outline-dark"
-          style={{ padding: "2px" }}
-          onClick={() => handlePurchaseChange({ purchase }, "add")}
-        >
-          Add to Cart
-        </button>
         <input
-          className="ml-1"
-          style={{ width: "25%", textAlign: "center" }}
+          style={{
+            width: "30%",
+            height: "70%",
+            textAlign: "center",
+            padding: "0px",
+          }}
           type="number"
           min="1"
-          max={props.product.ammount}
+          max={product.ammount}
           defaultValue="1"
           onChange={(event) => setValue(event.target.valueAsNumber)}
         ></input>
+        <button
+          type="button"
+          className="btn"
+          style={{ padding: "2px" }}
+          onClick={() => handlePurchaseChange(purchase)}
+        >
+          <ShoppingCartCheckoutIcon />
+        </button>
       </li>
     );
   };
-
-  if (products.length === 0) {
-    return <div className="fs-1 text-center fw-normal">NO ITEM FOUND</div>;
-  } else {
-    return (
-      <Row>
-        {products.map((product) => (
-          <Col
-            as="ul"
-            md={4}
-            key={product.productId}
-            style={{ listStyle: "none", textAlign: "center" }}
-          >
-            <img
-              className="img-fluid"
-              title={product.product + " pic"}
-              src={`data:image/jpeg;base64,${product.photo}`}
-            />
-            <li>{product.product}</li>
-            <li>PRICE: {product.price} jpy</li>
-            <li>REMAINING: {product.ammount}</li>
-            <PurchaseNum product={product} />
-          </Col>
-        ))}
-      </Row>
-    );
-  }
+  return (
+    <Col as="li" key={product.productId} style={{ listStyle: "none" }}>
+      <div
+        style={{
+          border: "solid",
+          borderColor: "#DDDDDD",
+          borderWidth: "0.5px",
+          borderRadius: "10px",
+        }}
+      >
+        <img
+          className="img-fluid"
+          title={product.product + " pic"}
+          src={`data:image/jpeg;base64,${product.photo}`}
+          style={{ padding: "8px 4px 0px 4px" }}
+        />
+        <div style={{ padding: "0px 4px 0px 4px" }}>
+          <li style={{ fontSize: "1.2em", fontWeight: "500" }}>
+            {product.product}
+          </li>
+          <li style={{ fontSize: "0.9em" }}>Price: {product.price} jpy</li>
+          <li style={{ fontSize: "0.9em" }}>Remaining: {product.ammount}</li>
+          <PurchaseNum product={product} />
+        </div>
+      </div>
+    </Col>
+  );
 };
 
-export default ProductFiled;
+export default ProductField;
