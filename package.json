@@ -1,7 +1,10 @@
 {
   "name": "react-project",
   "version": "0.1.0",
-  "private": true,
+  "private": true, 
+  "optionalDependencies": {
+    "fsevents": "2.1.2"
+  },
   "dependencies": {
     "@mui/icons-material": "^5.15.13",
     "@mui/material": "^5.15.13",
