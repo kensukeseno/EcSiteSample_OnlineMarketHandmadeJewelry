@@ -37,19 +37,12 @@ const Login: React.FC<LoginProps> = ({
 
   const onLogin = () => {
     // When login is successful, display username and set login state to true
-    fetch(
-      backendUrl + "/login?username=" + userName + "&password=" + password,
-      {
-        method: "post",
-        body: "",
-      }
-    )
+    fetch(backendUrl + "/login?username=" + userName + "&password=" + password)
       .then((res) => res.json())
       .then((data: { result: string }) => {
         if (data.result === "success") {
           setLoginUser(userName);
           setLoginState(true);
-          handleClose();
         } else if (data.result === "fail") {
           setLoginErrorState(true);
         }
@@ -88,6 +81,7 @@ const Login: React.FC<LoginProps> = ({
               value="Go"
               onClick={() => {
                 onLogin();
+                handleClose();
               }}
             ></input>
           </Modal.Body>

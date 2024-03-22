@@ -1,7 +1,12 @@
-import { jsx as _jsx } from "react/jsx-runtime";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import ProductField from "./ProductField";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_multi_carousel_1 = __importDefault(require("react-multi-carousel"));
+require("react-multi-carousel/lib/styles.css");
+const ProductField_1 = __importDefault(require("./ProductField"));
 const responsive = {
     superLargeDesktop: {
         breakpoint: { max: 4000, min: 3000 },
@@ -21,6 +26,6 @@ const responsive = {
     },
 };
 const ProductFieldCarousel = ({ products, onPurchaseChange: handlePurchaseChange, }) => {
-    return (_jsx(Carousel, Object.assign({ responsive: responsive }, { children: products.map((product) => (_jsx(ProductField, { product: product, onPurchaseChange: handlePurchaseChange }))) })));
+    return ((0, jsx_runtime_1.jsx)(react_multi_carousel_1.default, Object.assign({ responsive: responsive }, { children: products.map((product) => ((0, jsx_runtime_1.jsx)(ProductField_1.default, { product: product, onPurchaseChange: handlePurchaseChange }))) })));
 };
-export default ProductFieldCarousel;
+exports.default = ProductFieldCarousel;

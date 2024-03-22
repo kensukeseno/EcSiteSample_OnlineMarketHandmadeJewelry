@@ -1,15 +1,20 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import { BACKEND_URL_DEVELOPMENT, BACKEND_URL_PRODUCTION, } from "../../properties/application";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
+const Modal_1 = __importDefault(require("react-bootstrap/Modal"));
+const Button_1 = __importDefault(require("react-bootstrap/Button"));
+const application_1 = require("../../properties/application");
 const backendUrl = process.env.NODE_ENV === "development"
-    ? BACKEND_URL_DEVELOPMENT
-    : BACKEND_URL_PRODUCTION;
+    ? application_1.BACKEND_URL_DEVELOPMENT
+    : application_1.BACKEND_URL_PRODUCTION;
 // Login modal
 const Login = ({ show, handleClose, setLoginUser, setLoginState, }) => {
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
+    const [userName, setUserName] = (0, react_1.useState)("");
+    const [password, setPassword] = (0, react_1.useState)("");
     const userNameHandler = (event) => {
         setUserName(event.target.value);
     };
@@ -18,16 +23,12 @@ const Login = ({ show, handleClose, setLoginUser, setLoginState, }) => {
     };
     const onLogin = () => {
         // When login is successful, display username and set login state to true
-        fetch(backendUrl + "/login?username=" + userName + "&password=" + password, {
-            method: "post",
-            body: "",
-        })
+        fetch(backendUrl + "/login?username=" + userName + "&password=" + password)
             .then((res) => res.json())
             .then((data) => {
             if (data.result === "success") {
                 setLoginUser(userName);
                 setLoginState(true);
-                handleClose();
             }
             else if (data.result === "fail") {
                 setLoginErrorState(true);
@@ -35,9 +36,10 @@ const Login = ({ show, handleClose, setLoginUser, setLoginState, }) => {
         });
     };
     // Login error state
-    const [loginErrorState, setLoginErrorState] = useState(false);
-    return (_jsxs(_Fragment, { children: ["Login", _jsx("div", Object.assign({ onClick: (e) => e.stopPropagation() }, { children: _jsxs(Modal, Object.assign({ show: show, onHide: handleClose }, { children: [_jsx(Modal.Header, Object.assign({ closeButton: true }, { children: _jsx(Modal.Title, { children: "LOGIN" }) })), _jsxs(Modal.Body, { children: [_jsx("div", Object.assign({ style: { display: loginErrorState ? "block" : "none" } }, { children: "username or password is incorrect" })), _jsx("input", { onChange: userNameHandler, type: "text", name: "username", placeholder: "username" }), _jsx("input", { onChange: passwordHandler, type: "password", name: "password", placeholder: "password" }), _jsx("input", { type: "submit", value: "Go", onClick: () => {
+    const [loginErrorState, setLoginErrorState] = (0, react_1.useState)(false);
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: ["Login", (0, jsx_runtime_1.jsx)("div", Object.assign({ onClick: (e) => e.stopPropagation() }, { children: (0, jsx_runtime_1.jsxs)(Modal_1.default, Object.assign({ show: show, onHide: handleClose }, { children: [(0, jsx_runtime_1.jsx)(Modal_1.default.Header, Object.assign({ closeButton: true }, { children: (0, jsx_runtime_1.jsx)(Modal_1.default.Title, { children: "LOGIN" }) })), (0, jsx_runtime_1.jsxs)(Modal_1.default.Body, { children: [(0, jsx_runtime_1.jsx)("div", Object.assign({ style: { display: loginErrorState ? "block" : "none" } }, { children: "username or password is incorrect" })), (0, jsx_runtime_1.jsx)("input", { onChange: userNameHandler, type: "text", name: "username", placeholder: "username" }), (0, jsx_runtime_1.jsx)("input", { onChange: passwordHandler, type: "password", name: "password", placeholder: "password" }), (0, jsx_runtime_1.jsx)("input", { type: "submit", value: "Go", onClick: () => {
                                         onLogin();
-                                    } })] }), _jsx(Modal.Footer, { children: _jsx(Button, Object.assign({ variant: "secondary", onClick: handleClose }, { children: "Close" })) })] })) }))] }));
+                                        handleClose();
+                                    } })] }), (0, jsx_runtime_1.jsx)(Modal_1.default.Footer, { children: (0, jsx_runtime_1.jsx)(Button_1.default, Object.assign({ variant: "secondary", onClick: handleClose }, { children: "Close" })) })] })) }))] }));
 };
-export default Login;
+exports.default = Login;

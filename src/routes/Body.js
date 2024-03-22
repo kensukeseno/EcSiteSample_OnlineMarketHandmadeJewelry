@@ -1,13 +1,16 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { Product } from "../pages/Product";
-import { Cart } from "../pages/Cart";
-import { Pay } from "../pages/Pay";
-import { useState } from "react";
-export function Body() {
-    const [productsInCart, setProductsInCart] = useState([]);
-    const [cart, setCart] = useState({ num: 0, price: 0 });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Body = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_router_dom_1 = require("react-router-dom");
+const Home_1 = require("../pages/Home");
+const Product_1 = require("../pages/Product");
+const Cart_1 = require("../pages/Cart");
+const Pay_1 = require("../pages/Pay");
+const react_1 = require("react");
+function Body() {
+    const [productsInCart, setProductsInCart] = (0, react_1.useState)([]);
+    const [cart, setCart] = (0, react_1.useState)({ num: 0, price: 0 });
     // This method is called when a new item is added to cart
     const handlePurchaseChange = (purchase) => {
         let newPurchaseflag = true;
@@ -51,6 +54,7 @@ export function Body() {
         });
         setProductsInCart(deletedArr);
     };
-    return (_jsx("div", Object.assign({ style: { fontSize: "15px" } }, { children: _jsxs(Routes, { children: [_jsx(Route, { path: "/", element: _jsx(Home, { onPurchaseChange: handlePurchaseChange }) }), _jsx(Route, { path: "/product", element: _jsx(Product, { onPurchaseChange: handlePurchaseChange }) }), _jsx(Route, { path: "/cart", element: _jsx(Cart, { purchases: productsInCart, purchaseSum: cart, onPurchaseDelete: handlePurchaseDelete }) }), _jsx(Route, { path: "/pay", element: _jsx(Pay, {}) })] }) })));
+    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ style: { fontSize: "15px" } }, { children: (0, jsx_runtime_1.jsxs)(react_router_dom_1.Routes, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/", element: (0, jsx_runtime_1.jsx)(Home_1.Home, { onPurchaseChange: handlePurchaseChange }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/product", element: (0, jsx_runtime_1.jsx)(Product_1.Product, { onPurchaseChange: handlePurchaseChange }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/cart", element: (0, jsx_runtime_1.jsx)(Cart_1.Cart, { purchases: productsInCart, purchaseSum: cart, onPurchaseDelete: handlePurchaseDelete }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/pay", element: (0, jsx_runtime_1.jsx)(Pay_1.Pay, {}) })] }) })));
 }
-export default Body;
+exports.Body = Body;
+exports.default = Body;

@@ -13,9 +13,11 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "chalk": "^4.1.2",
     "install": "^0.13.0",
+    "nanoid": "^3.3.7",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.4",
     "react-responsive": "^9.0.2",
@@ -47,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0"
   }
 }
