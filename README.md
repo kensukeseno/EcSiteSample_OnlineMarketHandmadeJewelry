@@ -3,6 +3,8 @@ OnlineMarketHandmadeJewelry_forntend is  A front-end system of an ecommerce web-
 OnlineMarketHandmadeJewelry is a platform where local artists can showcase thier products, make fans and sell thier items.
 So the homepage is designed to display items categorized by Artists.
 # pic of homepage
+<img width="710" alt="Screenshot 2023-10-06 122602" src="https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/fbe32b6b-3755-4ef2-80bb-0c8aae8084ca">
+
 Specific items can be also found through search function on top of page.
 # pic of page after search
 In shopping cart, items can be reviewed and modified (currently only can be deleted).
