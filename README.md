@@ -3,7 +3,7 @@ This is a front-end system of <strong>OnlineMarketHandmadeJewelry</strong>, whic
 Here is a link to the app. http://3.145.108.241/<br />
 The app is a platform where local artists can showcase thier products, make fans and sell thier items.<br />
 
-So the homepage is designed to display items categorized by Artists.<br />
+So the homepage is designed to display items categorized by artists.<br />
 <img width="628" alt="homepage" src="https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/055e2482-5452-4b2e-b79f-76948c15369e">
 
 Specific items can be also found through search function on top of page.<br />
