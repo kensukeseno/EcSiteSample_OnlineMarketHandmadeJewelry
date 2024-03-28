@@ -1,7 +1,7 @@
 # OnlineMarketHandmadeJewelry_forntend
-OnlineMarketHandmadeJewelry_forntend is a front-end system of OnlineMarketHandmadeJewelry which is an ecommerce web-application.<br />
+This is a front-end system of <strong>OnlineMarketHandmadeJewelry</strong>, which is an ecommerce web-application.<br />
 Here is a link to the app. http://3.145.108.241/<br />
-OnlineMarketHandmadeJewelry is a platform where local artists can showcase thier products, make fans and sell thier items.<br />
+The app is a platform where local artists can showcase thier products, make fans and sell thier items.<br />
 
 So the homepage is designed to display items categorized by Artists.<br />
 <img width="628" alt="homepage" src="https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/055e2482-5452-4b2e-b79f-76948c15369e">
