@@ -12,7 +12,7 @@ const application_1 = require("../properties/application");
 const backendUrl = process.env.NODE_ENV === "development"
     ? application_1.BACKEND_URL_DEVELOPMENT
     : application_1.BACKEND_URL_PRODUCTION;
-const Product = ({ onPurchaseChange: handlePurchaseChange, }) => {
+const Product = ({ handlePurchaseChange, itemInSearch, }) => {
     const search = (0, react_router_dom_1.useLocation)().search;
     const product = new URLSearchParams(search).get("product");
     const [products, setProducts] = (0, react_1.useState)([
@@ -26,12 +26,12 @@ const Product = ({ onPurchaseChange: handlePurchaseChange, }) => {
         },
     ]);
     (0, react_1.useEffect)(() => {
-        fetch(backendUrl + `/product?product=${product}`)
+        fetch(backendUrl + `/product?product=${itemInSearch}`)
             .then((res) => res.json())
             .then((data) => {
             setProducts(data);
         });
-    }, []);
+    }, [itemInSearch]);
     return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(Search_1.default, { products: products, onPurchaseChange: handlePurchaseChange }) }));
 };
 exports.Product = Product;

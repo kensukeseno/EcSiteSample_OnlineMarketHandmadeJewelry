@@ -54,7 +54,7 @@ const ProductField: React.FC<ProductFieldProps> = ({
     );
   };
   return (
-    <Col as="li" key={product.productId} style={{ listStyle: "none" }}>
+    <Col style={{ listStyle: "none" }}>
       <div
         style={{
           border: "solid",
@@ -69,14 +69,14 @@ const ProductField: React.FC<ProductFieldProps> = ({
           src={`data:image/jpeg;base64,${product.photo}`}
           style={{ padding: "8px 4px 0px 4px" }}
         />
-        <div style={{ padding: "0px 4px 0px 4px" }}>
+        <ul style={{ padding: "0px 4px 0px 4px", listStyleType: "none" }}>
           <li style={{ fontSize: "1.2em", fontWeight: "500" }}>
             {product.product}
           </li>
           <li style={{ fontSize: "0.9em" }}>Price: {product.price} jpy</li>
           <li style={{ fontSize: "0.9em" }}>Remaining: {product.ammount}</li>
           <PurchaseNum product={product} />
-        </div>
+        </ul>
       </div>
     </Col>
   );

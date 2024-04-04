@@ -15,7 +15,11 @@ const SearchField: React.FC<SearchProps> = ({
   onPurchaseChange: handlePurchaseChange,
 }) => {
   if (products.length === 0) {
-    return <div className="fs-1 text-center fw-normal">NO ITEM FOUND</div>;
+    return (
+      <div className="fs-1 text-center fw-normal" style={{ color: "#2994dc" }}>
+        NO ITEM FOUND
+      </div>
+    );
   } else {
     return (
       <div
@@ -29,7 +33,7 @@ const SearchField: React.FC<SearchProps> = ({
         }}
       >
         {products.map((product) => (
-          <div className="search-container">
+          <div className="search-container" key={product.productId}>
             <ProductField
               product={product}
               onPurchaseChange={handlePurchaseChange}

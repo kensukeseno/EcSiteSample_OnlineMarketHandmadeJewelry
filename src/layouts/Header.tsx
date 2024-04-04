@@ -13,7 +13,17 @@ const backendUrl =
     ? BACKEND_URL_DEVELOPMENT
     : BACKEND_URL_PRODUCTION;
 
-const Header = () => {
+type headerType = {
+  loginState: boolean;
+  setLoginState: (loginState: boolean) => void;
+  setItemInSearch: (itemInSearch: string) => void;
+};
+
+const Header: React.FC<headerType> = ({
+  loginState,
+  setLoginState,
+  setItemInSearch,
+}) => {
   const [loginModalShow, setLoginModalShow] = useState<boolean>(false);
   const handleLoginModalClose = () => {
     setLoginModalShow(false);
@@ -32,14 +42,14 @@ const Header = () => {
 
   const [loginUser, setLoginUser] = useState<string>("Guest");
 
+  const [inputItem, setInputItem] = useState<string>("");
+
   const onLogout = () => {
     fetch(backendUrl + "/logout").then(() => {
       setLoginUser("Guest");
       setLoginState(false);
     });
   };
-
-  const [loginState, setLoginState] = useState<boolean>(false);
 
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 768px)",
@@ -75,26 +85,28 @@ const Header = () => {
           alignItems: "center",
         }}
       >
-        <form className="w-100" action="/product" method="get">
-          <input
-            style={{ width: "80%", height: "30px" }}
-            type="text"
-            name="product"
-            placeholder="Search Items"
-          />
+        <input
+          style={{ width: "80%", height: "30px" }}
+          type="text"
+          name="product"
+          placeholder="Search Items"
+          value={inputItem}
+          onChange={(e) => setInputItem(e.target.value)}
+        />
+        <Link to="/product">
           <input
             type="submit"
             value="&#xf002;"
             style={{
-              backgroundColor: "#FFF6E9",
-              padding: "1px 2px",
-              height: "30px",
-              borderWidth: "1px",
-              fontFamily: "FontAwesome",
               width: "20%",
+              fontFamily: "FontAwesome",
+            }}
+            onClick={() => {
+              setItemInSearch(inputItem);
+              setInputItem("");
             }}
           />
-        </form>
+        </Link>
       </div>
       <div
         className="text-center p-0"

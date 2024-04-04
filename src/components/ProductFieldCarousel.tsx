@@ -36,6 +36,7 @@ const ProductFieldCarousel: React.FC<ProductFiledProps> = ({
     <Carousel responsive={responsive}>
       {products.map((product) => (
         <ProductField
+          key={product.productId}
           product={product}
           onPurchaseChange={handlePurchaseChange}
         />

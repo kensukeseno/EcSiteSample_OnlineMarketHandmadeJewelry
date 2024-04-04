@@ -6,8 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cart = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_bootstrap_1 = require("react-bootstrap");
+const react_router_dom_1 = require("react-router-dom");
+const Alert_1 = __importDefault(require("react-bootstrap/Alert"));
 const DeleteSharp_1 = __importDefault(require("@mui/icons-material/DeleteSharp"));
-const Cart = ({ purchases, purchaseSum: purchseSum, onPurchaseDelete, }) => {
+const react_1 = require("react");
+const Cart = ({ setProductsInCart, loginState, purchases, purchaseSum: purchseSum, onPurchaseDelete, }) => {
     const nullConverter = (num) => {
         if (num === "load") {
             return (num = 0);
@@ -35,13 +38,23 @@ const Cart = ({ purchases, purchaseSum: purchseSum, onPurchaseDelete, }) => {
                             backgroundColor: "white",
                             padding: "5px 5px",
                             borderRadius: "4px",
-                        } }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ className: "px-1" }, { children: ["Items ", purchseSum.num] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: "px-1" }, { children: ["Total ", purchseSum.price, " JPY"] })), (0, jsx_runtime_1.jsx)("a", Object.assign({ className: "btn btn-outline-secondary w-100 py-1", style: {
+                        } }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ className: "px-1" }, { children: ["Items ", purchseSum.num] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: "px-1" }, { children: ["Total ", purchseSum.price, " JPY"] })), loginState ? ((0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: "/pay", className: "btn btn-outline-secondary w-100 py-1", style: {
                                     color: "#0D9276",
                                     borderColor: "#0D9276",
                                     borderWidth: "2px",
-                                }, href: "/pay" }, { children: "Proceed to Buy" }))] }))] }));
+                                    margin: "10px 0 10px 0",
+                                }, onClick: () => setProductsInCart([]) }, { children: "Proceed to Buy" }))) : ((0, jsx_runtime_1.jsx)(AlertDismissible, {}))] }))] }));
         }
     };
+    function AlertDismissible() {
+        const [show, setShow] = (0, react_1.useState)(false);
+        return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(Alert_1.default, Object.assign({ show: show, variant: "success" }, { children: (0, jsx_runtime_1.jsx)("p", { children: "Please sign in before you continue shopping" }) })), !show && ((0, jsx_runtime_1.jsx)("p", Object.assign({ className: "btn btn-outline-secondary w-100 py-1", style: {
+                        color: "#0D9276",
+                        borderColor: "#0D9276",
+                        borderWidth: "2px",
+                        margin: "10px 0 10px 0",
+                    }, onClick: () => setShow(true) }, { children: "Proceed to Buy" })))] }));
+    }
     return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(CartBody, {}) }));
 };
 exports.Cart = Cart;

@@ -39,11 +39,29 @@ const Signup: React.FC<SignupProps> = ({
   // Resister new account, diplay username and set login state to true
   const onResister = () => {
     fetch(
-      backendUrl + "/resister?username=" + userName + "&password=" + password
-    );
-    setLoginUser(userName);
-    setLoginState(true);
+      backendUrl + "/resister?username=" + userName + "&password=" + password,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data: { result: string }) => {
+        if (data.result === "success") {
+          setSignErrorState(false);
+          setLoginUser(userName);
+          setLoginState(true);
+          handleClose();
+        } else if (data.result === "fail") {
+          setSignErrorState(true);
+        }
+      });
   };
+
+  // Login error state
+  const [signinErrorState, setSignErrorState] = useState<boolean>(false);
 
   return (
     <>
@@ -54,6 +72,11 @@ const Signup: React.FC<SignupProps> = ({
             <Modal.Title>Sign Up</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            {signinErrorState && (
+              <p style={{ color: "red" }}>
+                Failed to sing up. Please try again with a different username.
+              </p>
+            )}
             <input
               onChange={userNameHandler}
               type="text"
@@ -71,7 +94,6 @@ const Signup: React.FC<SignupProps> = ({
               value="Go"
               onClick={() => {
                 onResister();
-                handleClose();
               }}
             ></input>
           </Modal.Body>

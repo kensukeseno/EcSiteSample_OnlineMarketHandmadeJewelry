@@ -38,7 +38,13 @@ export const Home: React.FC<HomeProps> = ({
   ]);
 
   useEffect(() => {
-    fetch(backendUrl + "/productByArtist")
+    fetch(backendUrl + "/productByArtist", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setArtists(data);

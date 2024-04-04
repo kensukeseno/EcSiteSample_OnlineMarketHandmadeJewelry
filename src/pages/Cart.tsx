@@ -1,14 +1,21 @@
 import { TypeProductInCart } from "../components/types/Columns";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
+import React, { useState } from "react";
 
 type CartProps = {
+  setProductsInCart: (product: TypeProductInCart[] | []) => void;
+  loginState: boolean;
   purchases: TypeProductInCart[];
   purchaseSum: { num: number; price: number };
   onPurchaseDelete: (deleteIndex: number) => void;
 };
 
 export const Cart: React.FC<CartProps> = ({
+  setProductsInCart,
+  loginState,
   purchases,
   purchaseSum: purchseSum,
   onPurchaseDelete,
@@ -95,22 +102,54 @@ export const Cart: React.FC<CartProps> = ({
           >
             <div className="px-1">Items {purchseSum.num}</div>
             <div className="px-1">Total {purchseSum.price} JPY</div>
-            <a
-              className="btn btn-outline-secondary w-100 py-1"
-              style={{
-                color: "#0D9276",
-                borderColor: "#0D9276",
-                borderWidth: "2px",
-              }}
-              href="/pay"
-            >
-              Proceed to Buy
-            </a>
+            {loginState ? (
+              <Link
+                to="/pay"
+                className="btn btn-outline-secondary w-100 py-1"
+                style={{
+                  color: "#0D9276",
+                  borderColor: "#0D9276",
+                  borderWidth: "2px",
+                  margin: "10px 0 10px 0",
+                }}
+                onClick={() => setProductsInCart([])}
+              >
+                Proceed to Buy
+              </Link>
+            ) : (
+              <AlertDismissible />
+            )}
           </Col>
         </Row>
       );
     }
   };
+
+  function AlertDismissible() {
+    const [show, setShow] = useState(false);
+
+    return (
+      <>
+        <Alert show={show} variant="success">
+          <p>Please sign in before you continue shopping</p>
+        </Alert>
+        {!show && (
+          <p
+            className="btn btn-outline-secondary w-100 py-1"
+            style={{
+              color: "#0D9276",
+              borderColor: "#0D9276",
+              borderWidth: "2px",
+              margin: "10px 0 10px 0",
+            }}
+            onClick={() => setShow(true)}
+          >
+            Proceed to Buy
+          </p>
+        )}
+      </>
+    );
+  }
 
   return (
     <>

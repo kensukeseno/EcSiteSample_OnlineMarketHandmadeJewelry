@@ -24,11 +24,11 @@ const ProductField = ({ product, onPurchaseChange: handlePurchaseChange, }) => {
                         padding: "0px",
                     }, type: "number", min: "1", max: product.ammount, defaultValue: "1", onChange: (event) => setValue(event.target.valueAsNumber) }), (0, jsx_runtime_1.jsx)("button", Object.assign({ type: "button", className: "btn", style: { padding: "2px" }, onClick: () => handlePurchaseChange(purchase) }, { children: (0, jsx_runtime_1.jsx)(ShoppingCartCheckout_1.default, {}) }))] })));
     };
-    return ((0, jsx_runtime_1.jsx)(react_bootstrap_1.Col, Object.assign({ as: "li", style: { listStyle: "none" } }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ style: {
+    return ((0, jsx_runtime_1.jsx)(react_bootstrap_1.Col, Object.assign({ style: { listStyle: "none" } }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ style: {
                 border: "solid",
                 borderColor: "#DDDDDD",
                 borderWidth: "0.5px",
                 borderRadius: "10px",
-            } }, { children: [(0, jsx_runtime_1.jsx)("img", { className: "img-fluid", title: product.product + " pic", src: `data:image/jpeg;base64,${product.photo}`, style: { padding: "8px 4px 0px 4px" } }), (0, jsx_runtime_1.jsxs)("div", Object.assign({ style: { padding: "0px 4px 0px 4px" } }, { children: [(0, jsx_runtime_1.jsx)("li", Object.assign({ style: { fontSize: "1.2em", fontWeight: "500" } }, { children: product.product })), (0, jsx_runtime_1.jsxs)("li", Object.assign({ style: { fontSize: "0.9em" } }, { children: ["Price: ", product.price, " jpy"] })), (0, jsx_runtime_1.jsxs)("li", Object.assign({ style: { fontSize: "0.9em" } }, { children: ["Remaining: ", product.ammount] })), (0, jsx_runtime_1.jsx)(PurchaseNum, { product: product })] }))] })) }), product.productId));
+            } }, { children: [(0, jsx_runtime_1.jsx)("img", { className: "img-fluid", title: product.product + " pic", src: `data:image/jpeg;base64,${product.photo}`, style: { padding: "8px 4px 0px 4px" } }), (0, jsx_runtime_1.jsxs)("ul", Object.assign({ style: { padding: "0px 4px 0px 4px", listStyleType: "none" } }, { children: [(0, jsx_runtime_1.jsx)("li", Object.assign({ style: { fontSize: "1.2em", fontWeight: "500" } }, { children: product.product })), (0, jsx_runtime_1.jsxs)("li", Object.assign({ style: { fontSize: "0.9em" } }, { children: ["Price: ", product.price, " jpy"] })), (0, jsx_runtime_1.jsxs)("li", Object.assign({ style: { fontSize: "0.9em" } }, { children: ["Remaining: ", product.ammount] })), (0, jsx_runtime_1.jsx)(PurchaseNum, { product: product })] }))] })) })));
 };
 exports.default = ProductField;

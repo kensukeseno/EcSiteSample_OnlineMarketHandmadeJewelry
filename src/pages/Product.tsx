@@ -12,10 +12,14 @@ const backendUrl =
     ? BACKEND_URL_DEVELOPMENT
     : BACKEND_URL_PRODUCTION;
 
-type ProductProps = { onPurchaseChange: (purchase: TypeProductInCart) => void };
+type ProductProps = {
+  handlePurchaseChange: (purchase: TypeProductInCart) => void;
+  itemInSearch: string;
+};
 
 export const Product: React.FC<ProductProps> = ({
-  onPurchaseChange: handlePurchaseChange,
+  handlePurchaseChange,
+  itemInSearch,
 }) => {
   const search = useLocation().search;
   const product = new URLSearchParams(search).get("product");
@@ -32,12 +36,12 @@ export const Product: React.FC<ProductProps> = ({
   ]);
 
   useEffect(() => {
-    fetch(backendUrl + `/product?product=${product}`)
+    fetch(backendUrl + `/product?product=${itemInSearch}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
       });
-  }, []);
+  }, [itemInSearch]);
 
   return (
     <>

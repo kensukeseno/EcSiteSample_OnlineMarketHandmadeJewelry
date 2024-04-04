@@ -28,7 +28,13 @@ const Home = ({ onPurchaseChange: handlePurchaseChange, }) => {
         },
     ]);
     (0, react_1.useEffect)(() => {
-        fetch(backendUrl + "/productByArtist")
+        fetch(backendUrl + "/productByArtist", {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+        })
             .then((res) => res.json())
             .then((data) => {
             setArtists(data);

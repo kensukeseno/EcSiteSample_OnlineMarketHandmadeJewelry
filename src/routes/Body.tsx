@@ -6,7 +6,12 @@ import { Pay } from "../pages/Pay";
 import { TypeProductInCart } from "../components/types/Columns";
 import { useState } from "react";
 
-export function Body() {
+type bodyType = {
+  loginState: boolean;
+  itemInSearch: string;
+};
+
+const Body: React.FC<bodyType> = ({ loginState, itemInSearch }) => {
   const [productsInCart, setProductsInCart] = useState<TypeProductInCart[]>([]);
   const [cart, setCart] = useState<{
     num: number;
@@ -65,12 +70,19 @@ export function Body() {
         />
         <Route
           path="/product"
-          element={<Product onPurchaseChange={handlePurchaseChange} />}
+          element={
+            <Product
+              handlePurchaseChange={handlePurchaseChange}
+              itemInSearch={itemInSearch}
+            />
+          }
         />
         <Route
           path="/cart"
           element={
             <Cart
+              setProductsInCart={setProductsInCart}
+              loginState={loginState}
               purchases={productsInCart}
               purchaseSum={cart}
               onPurchaseDelete={handlePurchaseDelete}
@@ -81,6 +93,6 @@ export function Body() {
       </Routes>
     </div>
   );
-}
+};
 
 export default Body;

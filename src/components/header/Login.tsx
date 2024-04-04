@@ -37,12 +37,25 @@ const Login: React.FC<LoginProps> = ({
 
   const onLogin = () => {
     // When login is successful, display username and set login state to true
-    fetch(backendUrl + "/login?username=" + userName + "&password=" + password)
+    fetch(
+      backendUrl + "/login" + "?username=" + userName + "&password=" + password,
+      {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "same-origin",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: "",
+      }
+    )
       .then((res) => res.json())
       .then((data: { result: string }) => {
         if (data.result === "success") {
           setLoginUser(userName);
           setLoginState(true);
+          handleClose();
         } else if (data.result === "fail") {
           setLoginErrorState(true);
         }
@@ -61,9 +74,9 @@ const Login: React.FC<LoginProps> = ({
             <Modal.Title>LOGIN</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div style={{ display: loginErrorState ? "block" : "none" }}>
-              username or password is incorrect
-            </div>
+            {loginErrorState && (
+              <p style={{ color: "red" }}>Username or password is incorrect.</p>
+            )}
             <input
               onChange={userNameHandler}
               type="text"
@@ -81,7 +94,6 @@ const Login: React.FC<LoginProps> = ({
               value="Go"
               onClick={() => {
                 onLogin();
-                handleClose();
               }}
             ></input>
           </Modal.Body>
