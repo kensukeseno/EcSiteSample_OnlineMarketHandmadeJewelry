@@ -1,19 +1,11 @@
-import { TypeProductInCart } from "../components/types/Columns";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
-import React, { useState } from "react";
+import { TypeCart } from "../components/types/Types";
 
-type CartProps = {
-  setProductsInCart: (product: TypeProductInCart[] | []) => void;
-  loginState: boolean;
-  purchases: TypeProductInCart[];
-  purchaseSum: { num: number; price: number };
-  onPurchaseDelete: (deleteIndex: number) => void;
-};
-
-export const Cart: React.FC<CartProps> = ({
+export const Cart: React.FC<TypeCart> = ({
   setProductsInCart,
   loginState,
   purchases,
@@ -151,11 +143,7 @@ export const Cart: React.FC<CartProps> = ({
     );
   }
 
-  return (
-    <>
-      <CartBody />
-    </>
-  );
+  return <CartBody />;
 };
 
 export default Cart;

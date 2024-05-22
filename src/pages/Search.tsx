@@ -1,12 +1,8 @@
 import React from "react";
-import { TpyeProduct as TypeProduct } from "../components/types/Columns";
+import { TypeSearch } from "../components/types/Types";
 import ProductField from "../components/ProductField";
 
-type SearchProps = {
-  products: TypeProduct[];
-};
-
-const SearchField: React.FC<SearchProps> = ({ products }) => {
+const SearchField: React.FC<TypeSearch> = ({ products }) => {
   if (products.length === 0) {
     return (
       <div className="fs-1 text-center fw-normal" style={{ color: "#2994dc" }}>

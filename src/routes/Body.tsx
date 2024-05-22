@@ -4,18 +4,13 @@ import { Home } from "../pages/Home";
 import { Product } from "../pages/Product";
 import { Cart } from "../pages/Cart";
 import { Pay } from "../pages/Pay";
-import { TypeProductInCart } from "../components/types/Columns";
-
-type bodyType = {
-  loginState: boolean;
-  itemInSearch: string;
-};
+import { TypeProductInCart, TypeBody } from "../components/types/Types";
 
 export const HandlePurchaseChangeContext = createContext<
   (purchase: TypeProductInCart) => void
 >(undefined!);
 
-const Body: React.FC<bodyType> = ({ loginState, itemInSearch }) => {
+const Body: React.FC<TypeBody> = ({ loginState, itemInSearch }) => {
   const [productsInCart, setProductsInCart] = useState<TypeProductInCart[]>([]);
   const [cart, setCart] = useState<{
     num: number;

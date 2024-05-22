@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cart = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
 const react_bootstrap_1 = require("react-bootstrap");
 const react_router_dom_1 = require("react-router-dom");
 const Alert_1 = __importDefault(require("react-bootstrap/Alert"));
 const DeleteSharp_1 = __importDefault(require("@mui/icons-material/DeleteSharp"));
-const react_1 = require("react");
 const Cart = ({ setProductsInCart, loginState, purchases, purchaseSum: purchseSum, onPurchaseDelete, }) => {
     const nullConverter = (num) => {
         if (num === "load") {
@@ -55,7 +55,7 @@ const Cart = ({ setProductsInCart, loginState, purchases, purchaseSum: purchseSu
                         margin: "10px 0 10px 0",
                     }, onClick: () => setShow(true) }, { children: "Proceed to Buy" })))] }));
     }
-    return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)(CartBody, {}) }));
+    return (0, jsx_runtime_1.jsx)(CartBody, {});
 };
 exports.Cart = Cart;
 exports.default = exports.Cart;

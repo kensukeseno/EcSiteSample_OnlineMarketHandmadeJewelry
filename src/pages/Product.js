@@ -11,7 +11,7 @@ const application_1 = require("../properties/application");
 const backendUrl = process.env.NODE_ENV === "development"
     ? application_1.BACKEND_URL_DEVELOPMENT
     : application_1.BACKEND_URL_PRODUCTION;
-const Product = ({ itemInSearch }) => {
+const Product = ({ itemInSearch, }) => {
     const [products, setProducts] = (0, react_1.useState)([
         {
             product: "load",

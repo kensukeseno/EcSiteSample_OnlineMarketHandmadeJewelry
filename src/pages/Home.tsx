@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ArtistField from "../components/ArtistField";
-import { TypeArtistProduct } from "../components/types/Columns";
+import { TypeArtistProduct } from "../components/types/Types";
 import {
   BACKEND_URL_DEVELOPMENT,
   BACKEND_URL_PRODUCTION,

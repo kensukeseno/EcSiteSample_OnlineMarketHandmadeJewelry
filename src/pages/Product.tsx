@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TpyeProduct } from "../components/types/Columns";
+import { TypeProduct } from "../components/types/Types";
 import SearchField from "./Search";
 import {
   BACKEND_URL_DEVELOPMENT,
@@ -11,12 +11,10 @@ const backendUrl =
     ? BACKEND_URL_DEVELOPMENT
     : BACKEND_URL_PRODUCTION;
 
-type ProductProps = {
-  itemInSearch: string;
-};
-
-export const Product: React.FC<ProductProps> = ({ itemInSearch }) => {
-  const [products, setProducts] = useState<TpyeProduct[]>([
+export const Product: React.FC<{ itemInSearch: string }> = ({
+  itemInSearch,
+}) => {
+  const [products, setProducts] = useState<TypeProduct[]>([
     {
       product: "load",
       ammount: "load",
@@ -37,4 +35,4 @@ export const Product: React.FC<ProductProps> = ({ itemInSearch }) => {
 
   return <SearchField products={products} />;
 };
-export default TpyeProduct;
+export default TypeProduct;

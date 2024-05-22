@@ -1,19 +1,17 @@
 import React, { useState, useContext } from "react";
-import { TpyeProduct as TypeProduct, TypeProductInCart } from "./types/Columns";
+import {
+  TypeProduct,
+  TypeProductInCart,
+  TypeProductField,
+  TypePurchaseNum,
+} from "./types/Types";
 import { Col } from "react-bootstrap";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { HandlePurchaseChangeContext } from "../routes/Body";
 
-type ProductFieldProps = {
-  product: TypeProduct;
-};
-
-const ProductField: React.FC<ProductFieldProps> = ({ product }) => {
-  type PurchaseNumProps = {
-    product: TypeProduct;
-  };
+const ProductField: React.FC<TypeProductField> = ({ product }) => {
   const handlePurchaseChange = useContext(HandlePurchaseChangeContext);
-  const PurchaseNum: React.FC<PurchaseNumProps> = ({ product }) => {
+  const PurchaseNum: React.FC<TypePurchaseNum> = ({ product }) => {
     const [value, setValue] = useState<number>(1);
     const purchase: TypeProductInCart = {
       product: product,

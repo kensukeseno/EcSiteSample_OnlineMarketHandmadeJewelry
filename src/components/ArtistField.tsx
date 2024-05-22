@@ -1,14 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
-import { TypeArtistProduct } from "./types/Columns";
 import ProductFieldCarousel from "./ProductFieldCarousel";
+import { TypeArtistField } from "./types/Types";
 
-type ArtistFieldProps = {
-  artistProducts: TypeArtistProduct[];
-};
-
-const ArtistField: React.FC<ArtistFieldProps> = ({ artistProducts }) => {
+const ArtistField: React.FC<TypeArtistField> = ({ artistProducts }) => {
   const productList = artistProducts.map((products) => (
     <Row
       className="list-group-item"

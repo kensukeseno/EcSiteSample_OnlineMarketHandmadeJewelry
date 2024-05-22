@@ -1,8 +1,8 @@
 import React from "react";
-import { TpyeProduct, TypeProductInCart } from "./types/Columns";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProductField from "./ProductField";
+import { TypeProductFiled } from "./types/Types";
 
 const responsive = {
   superLargeDesktop: {
@@ -23,11 +23,7 @@ const responsive = {
   },
 };
 
-type ProductFiledProps = {
-  products: TpyeProduct[];
-};
-
-const ProductFieldCarousel: React.FC<ProductFiledProps> = ({ products }) => {
+const ProductFieldCarousel: React.FC<TypeProductFiled> = ({ products }) => {
   return (
     <Carousel responsive={responsive}>
       {products.map((product) => (
