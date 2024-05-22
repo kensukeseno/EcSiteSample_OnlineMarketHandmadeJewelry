@@ -1,18 +1,27 @@
 # OnlineMarketHandmadeJewelry_forntend
 This is a front-end system of <strong>OnlineMarketHandmadeJewelry</strong>, which is an ecommerce web-application.<br />
-Here is a link to the app. http://3.145.108.241/<br />
+Link to the live app --> http://3.145.108.241/<br />
+Link to the the back-end repo--> 
+<a>https://github.com/kensukeseno/OnlineMarket_HandmadeJewelry_backend</a> <br />
+
+This is a demo project. Feel free to try making a new account trough sign-up and look through the live app.<br />
+
+## Homepage
 The app is a platform where local artists can showcase thier products, make fans and sell thier items.<br />
-
 So the homepage is designed to display items categorized by artists.<br />
-<img width="628" alt="homepage" src="https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/055e2482-5452-4b2e-b79f-76948c15369e">
+![homepage](https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/3e66aa7e-ed71-410b-bbe1-50dcc14fe703)
 
+## Search page
 Specific items can be also found through search function on top of page.<br />
-<img width="629" alt="search" src="https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/9b1fe4b0-0884-4d45-96f3-6b3a4a83d634">
+![search](https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/2473bd3b-911e-47d4-aec8-2405cf0ef6c8)
 
-In shopping cart, items can be reviewed and modified (currently only can be deleted).<br />
-<img width="632" alt="cart" src="https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/26face41-318f-46e4-88c8-a086f419c309">
+## Cart page
+In shopping cart, selected items can be reviewed and deleted.<br />
+![cart](https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/27da05b4-8b54-4d88-839d-b6b2a191bf31)
 
-Login and Sing-up (work in progress) functions  allow only singed-up customers to shop for the security purpose.
+## Login and Sing-up modals
+Login and Sing-up functions allow only singed-up customers to shop for the security purpose.
+![security](https://github.com/kensukeseno/OnlineMarketHandmadeJewelry_forntend/assets/146391922/a91f7715-3b8a-4eb8-bc77-6d43a4cfd56f)
 
 ## Technologies used
 This is an user-friendly SPA(single page application) developed using React.js + TypeScript.<br />
