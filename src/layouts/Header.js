@@ -9,10 +9,9 @@ const ShoppingCart_1 = __importDefault(require("@mui/icons-material/ShoppingCart
 const react_1 = require("react");
 const react_responsive_1 = require("react-responsive");
 const Sidebar_1 = __importDefault(require("../components/header/Sidebar"));
-const application_1 = require("../properties/application");
 const backendUrl = process.env.NODE_ENV === "development"
-    ? application_1.BACKEND_URL_DEVELOPMENT
-    : application_1.BACKEND_URL_PRODUCTION;
+    ? process.env.REACT_APP_BACKEND_URL_DEVELOPMENT
+    : process.env.REACT_APP_BACKEND_URL_PRODUCTION;
 const Header = ({ loginState, setLoginState, setItemInSearch, }) => {
     const [loginModalShow, setLoginModalShow] = (0, react_1.useState)(false);
     const handleLoginModalClose = () => {

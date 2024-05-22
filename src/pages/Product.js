@@ -7,10 +7,9 @@ exports.Product = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const Search_1 = __importDefault(require("./Search"));
-const application_1 = require("../properties/application");
 const backendUrl = process.env.NODE_ENV === "development"
-    ? application_1.BACKEND_URL_DEVELOPMENT
-    : application_1.BACKEND_URL_PRODUCTION;
+    ? process.env.REACT_APP_BACKEND_URL_DEVELOPMENT
+    : process.env.REACT_APP_BACKEND_URL_PRODUCTION;
 const Product = ({ itemInSearch, }) => {
     const [products, setProducts] = (0, react_1.useState)([
         {

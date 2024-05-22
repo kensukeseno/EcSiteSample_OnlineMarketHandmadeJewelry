@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import {
-  BACKEND_URL_DEVELOPMENT,
-  BACKEND_URL_PRODUCTION,
-} from "../../properties/application";
 
 const backendUrl =
   process.env.NODE_ENV === "development"
-    ? BACKEND_URL_DEVELOPMENT
-    : BACKEND_URL_PRODUCTION;
+    ? process.env.REACT_APP_BACKEND_URL_DEVELOPMENT
+    : process.env.REACT_APP_BACKEND_URL_PRODUCTION;
 
 type SignupProps = {
   show: boolean;

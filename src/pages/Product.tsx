@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import { TypeProduct } from "../components/types/Types";
 import SearchField from "./Search";
-import {
-  BACKEND_URL_DEVELOPMENT,
-  BACKEND_URL_PRODUCTION,
-} from "../properties/application";
 
 const backendUrl =
   process.env.NODE_ENV === "development"
-    ? BACKEND_URL_DEVELOPMENT
-    : BACKEND_URL_PRODUCTION;
+    ? process.env.REACT_APP_BACKEND_URL_DEVELOPMENT
+    : process.env.REACT_APP_BACKEND_URL_PRODUCTION;
 
 export const Product: React.FC<{ itemInSearch: string }> = ({
   itemInSearch,

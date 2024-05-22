@@ -3,15 +3,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import Sidebar from "../components/header/Sidebar";
-import {
-  BACKEND_URL_DEVELOPMENT,
-  BACKEND_URL_PRODUCTION,
-} from "../properties/application";
 
 const backendUrl =
   process.env.NODE_ENV === "development"
-    ? BACKEND_URL_DEVELOPMENT
-    : BACKEND_URL_PRODUCTION;
+    ? process.env.REACT_APP_BACKEND_URL_DEVELOPMENT
+    : process.env.REACT_APP_BACKEND_URL_PRODUCTION;
 
 type headerType = {
   loginState: boolean;
