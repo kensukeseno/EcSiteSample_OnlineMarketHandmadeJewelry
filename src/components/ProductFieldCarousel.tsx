@@ -25,21 +25,13 @@ const responsive = {
 
 type ProductFiledProps = {
   products: TpyeProduct[];
-  onPurchaseChange: (purchase: TypeProductInCart) => void;
 };
 
-const ProductFieldCarousel: React.FC<ProductFiledProps> = ({
-  products,
-  onPurchaseChange: handlePurchaseChange,
-}) => {
+const ProductFieldCarousel: React.FC<ProductFiledProps> = ({ products }) => {
   return (
     <Carousel responsive={responsive}>
       {products.map((product) => (
-        <ProductField
-          key={product.productId}
-          product={product}
-          onPurchaseChange={handlePurchaseChange}
-        />
+        <ProductField key={product.productId} product={product} />
       ))}
     </Carousel>
   );

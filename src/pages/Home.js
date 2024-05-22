@@ -11,7 +11,7 @@ const application_1 = require("../properties/application");
 const backendUrl = process.env.NODE_ENV === "development"
     ? application_1.BACKEND_URL_DEVELOPMENT
     : application_1.BACKEND_URL_PRODUCTION;
-const Home = ({ onPurchaseChange: handlePurchaseChange, }) => {
+const Home = () => {
     const [artists, setArtists] = (0, react_1.useState)([
         {
             artist: { name: "load", photo: "load", artistId: "load" },
@@ -40,7 +40,7 @@ const Home = ({ onPurchaseChange: handlePurchaseChange, }) => {
             setArtists(data);
         });
     }, []);
-    return ((0, jsx_runtime_1.jsx)(ArtistField_1.default, { artistProducts: artists, onPurchaseChange: handlePurchaseChange }));
+    return (0, jsx_runtime_1.jsx)(ArtistField_1.default, { artistProducts: artists });
 };
 exports.Home = Home;
 exports.default = exports.Home;

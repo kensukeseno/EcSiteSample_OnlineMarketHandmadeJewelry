@@ -7,7 +7,9 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const react_bootstrap_1 = require("react-bootstrap");
 const ShoppingCartCheckout_1 = __importDefault(require("@mui/icons-material/ShoppingCartCheckout"));
-const ProductField = ({ product, onPurchaseChange: handlePurchaseChange, }) => {
+const Body_1 = require("../routes/Body");
+const ProductField = ({ product }) => {
+    const handlePurchaseChange = (0, react_1.useContext)(Body_1.HandlePurchaseChangeContext);
     const PurchaseNum = ({ product }) => {
         const [value, setValue] = (0, react_1.useState)(1);
         const purchase = {

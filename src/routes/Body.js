@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.HandlePurchaseChangeContext = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_router_dom_1 = require("react-router-dom");
+const react_1 = require("react");
 const Home_1 = require("../pages/Home");
 const Product_1 = require("../pages/Product");
 const Cart_1 = require("../pages/Cart");
 const Pay_1 = require("../pages/Pay");
-const react_1 = require("react");
+exports.HandlePurchaseChangeContext = (0, react_1.createContext)(undefined);
 const Body = ({ loginState, itemInSearch }) => {
     const [productsInCart, setProductsInCart] = (0, react_1.useState)([]);
     const [cart, setCart] = (0, react_1.useState)({ num: 0, price: 0 });
@@ -53,6 +55,6 @@ const Body = ({ loginState, itemInSearch }) => {
         });
         setProductsInCart(deletedArr);
     };
-    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ style: { fontSize: "15px" } }, { children: (0, jsx_runtime_1.jsxs)(react_router_dom_1.Routes, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/", element: (0, jsx_runtime_1.jsx)(Home_1.Home, { onPurchaseChange: handlePurchaseChange }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/product", element: (0, jsx_runtime_1.jsx)(Product_1.Product, { handlePurchaseChange: handlePurchaseChange, itemInSearch: itemInSearch }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/cart", element: (0, jsx_runtime_1.jsx)(Cart_1.Cart, { setProductsInCart: setProductsInCart, loginState: loginState, purchases: productsInCart, purchaseSum: cart, onPurchaseDelete: handlePurchaseDelete }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/pay", element: (0, jsx_runtime_1.jsx)(Pay_1.Pay, {}) })] }) })));
+    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ style: { fontSize: "15px" } }, { children: (0, jsx_runtime_1.jsx)(exports.HandlePurchaseChangeContext.Provider, Object.assign({ value: handlePurchaseChange }, { children: (0, jsx_runtime_1.jsxs)(react_router_dom_1.Routes, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/", element: (0, jsx_runtime_1.jsx)(Home_1.Home, {}) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/product", element: (0, jsx_runtime_1.jsx)(Product_1.Product, { itemInSearch: itemInSearch }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/cart", element: (0, jsx_runtime_1.jsx)(Cart_1.Cart, { setProductsInCart: setProductsInCart, loginState: loginState, purchases: productsInCart, purchaseSum: cart, onPurchaseDelete: handlePurchaseDelete }) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/pay", element: (0, jsx_runtime_1.jsx)(Pay_1.Pay, {}) })] }) })) })));
 };
 exports.default = Body;

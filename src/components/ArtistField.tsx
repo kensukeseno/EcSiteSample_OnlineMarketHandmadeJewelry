@@ -1,24 +1,15 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
-import { TypeArtistProduct, TypeProductInCart } from "./types/Columns";
+import { TypeArtistProduct } from "./types/Columns";
 import ProductFieldCarousel from "./ProductFieldCarousel";
 
 type ArtistFieldProps = {
   artistProducts: TypeArtistProduct[];
-  onPurchaseChange: (purchase: TypeProductInCart) => void;
 };
 
-const ArtistField: React.FC<ArtistFieldProps> = ({
-  artistProducts,
-  onPurchaseChange: handlePurchaseChange,
-}) => {
+const ArtistField: React.FC<ArtistFieldProps> = ({ artistProducts }) => {
   const productList = artistProducts.map((products) => (
-    // <ul
-    //   className="list-group-item"
-    //   key={products.artist.artistId}
-    //   // style={{ margin: "0px 10px" }}
-    // >
     <Row
       className="list-group-item"
       key={products.artist.artistId}
@@ -57,10 +48,7 @@ const ArtistField: React.FC<ArtistFieldProps> = ({
           padding: "0px 0px",
         }}
       >
-        <ProductFieldCarousel
-          products={products.productEntityList}
-          onPurchaseChange={handlePurchaseChange}
-        />
+        <ProductFieldCarousel products={products.productEntityList} />
       </Col>
     </Row>
     // </ul>

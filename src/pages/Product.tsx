@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { TpyeProduct, TypeProductInCart } from "../components/types/Columns";
+import { TpyeProduct } from "../components/types/Columns";
 import SearchField from "./Search";
 import {
   BACKEND_URL_DEVELOPMENT,
@@ -13,17 +12,10 @@ const backendUrl =
     : BACKEND_URL_PRODUCTION;
 
 type ProductProps = {
-  handlePurchaseChange: (purchase: TypeProductInCart) => void;
   itemInSearch: string;
 };
 
-export const Product: React.FC<ProductProps> = ({
-  handlePurchaseChange,
-  itemInSearch,
-}) => {
-  const search = useLocation().search;
-  const product = new URLSearchParams(search).get("product");
-
+export const Product: React.FC<ProductProps> = ({ itemInSearch }) => {
   const [products, setProducts] = useState<TpyeProduct[]>([
     {
       product: "load",
@@ -43,13 +35,6 @@ export const Product: React.FC<ProductProps> = ({
       });
   }, [itemInSearch]);
 
-  return (
-    <>
-      <SearchField
-        products={products}
-        onPurchaseChange={handlePurchaseChange}
-      />
-    </>
-  );
+  return <SearchField products={products} />;
 };
 export default TpyeProduct;

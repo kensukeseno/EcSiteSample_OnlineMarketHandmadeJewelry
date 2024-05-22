@@ -1,15 +1,19 @@
 import { Route, Routes } from "react-router-dom";
+import { useState, createContext } from "react";
 import { Home } from "../pages/Home";
 import { Product } from "../pages/Product";
 import { Cart } from "../pages/Cart";
 import { Pay } from "../pages/Pay";
 import { TypeProductInCart } from "../components/types/Columns";
-import { useState } from "react";
 
 type bodyType = {
   loginState: boolean;
   itemInSearch: string;
 };
+
+export const HandlePurchaseChangeContext = createContext<
+  (purchase: TypeProductInCart) => void
+>(undefined!);
 
 const Body: React.FC<bodyType> = ({ loginState, itemInSearch }) => {
   const [productsInCart, setProductsInCart] = useState<TypeProductInCart[]>([]);
@@ -63,34 +67,28 @@ const Body: React.FC<bodyType> = ({ loginState, itemInSearch }) => {
 
   return (
     <div style={{ fontSize: "15px" }}>
-      <Routes>
-        <Route
-          path="/"
-          element={<Home onPurchaseChange={handlePurchaseChange} />}
-        />
-        <Route
-          path="/product"
-          element={
-            <Product
-              handlePurchaseChange={handlePurchaseChange}
-              itemInSearch={itemInSearch}
-            />
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <Cart
-              setProductsInCart={setProductsInCart}
-              loginState={loginState}
-              purchases={productsInCart}
-              purchaseSum={cart}
-              onPurchaseDelete={handlePurchaseDelete}
-            />
-          }
-        />
-        <Route path="/pay" element={<Pay />} />
-      </Routes>
+      <HandlePurchaseChangeContext.Provider value={handlePurchaseChange}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/product"
+            element={<Product itemInSearch={itemInSearch} />}
+          />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                setProductsInCart={setProductsInCart}
+                loginState={loginState}
+                purchases={productsInCart}
+                purchaseSum={cart}
+                onPurchaseDelete={handlePurchaseDelete}
+              />
+            }
+          />
+          <Route path="/pay" element={<Pay />} />
+        </Routes>
+      </HandlePurchaseChangeContext.Provider>
     </div>
   );
 };

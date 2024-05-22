@@ -25,7 +25,7 @@ const responsive = {
         items: 1,
     },
 };
-const ProductFieldCarousel = ({ products, onPurchaseChange: handlePurchaseChange, }) => {
-    return ((0, jsx_runtime_1.jsx)(react_multi_carousel_1.default, Object.assign({ responsive: responsive }, { children: products.map((product) => ((0, jsx_runtime_1.jsx)(ProductField_1.default, { product: product, onPurchaseChange: handlePurchaseChange }, product.productId))) })));
+const ProductFieldCarousel = ({ products }) => {
+    return ((0, jsx_runtime_1.jsx)(react_multi_carousel_1.default, Object.assign({ responsive: responsive }, { children: products.map((product) => ((0, jsx_runtime_1.jsx)(ProductField_1.default, { product: product }, product.productId))) })));
 };
 exports.default = ProductFieldCarousel;

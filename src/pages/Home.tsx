@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import ArtistField from "../components/ArtistField";
-import {
-  TypeArtistProduct,
-  TypeProductInCart,
-} from "../components/types/Columns";
+import { TypeArtistProduct } from "../components/types/Columns";
 import {
   BACKEND_URL_DEVELOPMENT,
   BACKEND_URL_PRODUCTION,
@@ -14,13 +11,7 @@ const backendUrl =
     ? BACKEND_URL_DEVELOPMENT
     : BACKEND_URL_PRODUCTION;
 
-type HomeProps = {
-  onPurchaseChange: (purchase: TypeProductInCart) => void;
-};
-
-export const Home: React.FC<HomeProps> = ({
-  onPurchaseChange: handlePurchaseChange,
-}) => {
+export const Home = () => {
   const [artists, setArtists] = useState<TypeArtistProduct[]>([
     {
       artist: { name: "load", photo: "load", artistId: "load" },
@@ -51,12 +42,7 @@ export const Home: React.FC<HomeProps> = ({
       });
   }, []);
 
-  return (
-    <ArtistField
-      artistProducts={artists}
-      onPurchaseChange={handlePurchaseChange}
-    />
-  );
+  return <ArtistField artistProducts={artists} />;
 };
 
 export default Home;
