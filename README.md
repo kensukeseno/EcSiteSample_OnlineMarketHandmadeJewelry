@@ -1,6 +1,6 @@
 # OnlineMarketHandmadeJewelry_forntend
 This is a front-end system of <strong>OnlineMarketHandmadeJewelry</strong>, which is an ecommerce web-application.<br />
-Link to the live app --> http://3.145.108.241/<br />
+Link to the live app --> http://3.144.130.234/<br />
 Link to the the back-end repo--> 
 <a>https://github.com/kensukeseno/OnlineMarket_HandmadeJewelry_backend</a> <br />
 
